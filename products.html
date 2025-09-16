@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <h1 class="head">CARTOLERIA</h1>
-  <nav class="nav-bar">
-    <ul class="nav-links" style="margin-top: 16px;">
+    <h1 class="head" >CARTOLERIA</h1>
+  <nav class="nav-bar" >
+    <ul class="nav-links" style="margin-top: 51px;">
       <li><a href="index.html">Home</a></li>
       <li><a href="products.html">Products</a></li>
       <li><a href="print-pro.html">Print-pro</a></li>
@@ -20,7 +21,7 @@
         <p class="item1_welp">contact-us to order*</p>
     </div>
 <section class="products-section">
-  <h2 style="font-style: italic;">Our Products</h2>
+  <h2 style="font-style: italic; margin-bottom: 90px;">Our Products</h2>
   <div class="products-grid">
     <div class="product">
       <img src="images/product1.jpg" alt="Product 1">
@@ -106,12 +107,7 @@
       <div class="desc-tag">Colour pen set</div>
       <button onclick="addToCart('Colour pen set', 100)"class="click-it">+</button>
     </div>
-    <div class="product">
-      <img src="images/product15.jpg" alt="Product 15">
-      <div class="price-tag">₹450</div>
-      <div class="desc-tag">Parker pen</div>
-      <button onclick="addToCart('Parker pen', 450)"class="click-it">+</button>
-    </div>
+    
     <div class="product">
       <img src="images/product16.jpg" alt="Product 16">
       <div class="price-tag">₹950</div>
@@ -157,66 +153,5 @@
   <ul id="cart-items"></ul>
   <button id="checkout-btn" onclick="checkout()">Place Order (COD)</button>
 </div>
-
-  <script>
-   let cart = [];
-
-function addToCart(name, price) {
-  showToast(`${name} added to cart ✅`);
-  cart.push({ name, price });
-  renderCart();
-}
-
-function showToast(message) {
-  const container = document.getElementById("toastContainer");
-  const toast = document.createElement("div");
-  toast.className = "toast";
-  toast.innerText = message;
-
-  container.appendChild(toast);
-
-  setTimeout(() => {
-    toast.classList.add("show");
-  }, 100);
-
-  setTimeout(() => {
-    toast.classList.remove("show");
-    setTimeout(() => toast.remove(), 400);
-  }, 3000);
-}
-
-function renderCart() {
-  const list = document.getElementById("cart-items");
-  list.innerHTML = "";
-  cart.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.innerHTML = `${item.name} - ₹${item.price} 
-      <button onclick="removeFromCart(${index})">x</button>`;
-    list.appendChild(li);
-  });
-}
-
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  renderCart();
-}
-
-function toggleCart() {
-  document.getElementById("cart-sidebar").classList.toggle("active");
-}
-
-function checkout() {
-  if (cart.length === 0) {
-    showToast("Your cart is empty ❌");
-    return;
-  }
-  showToast("Order placed successfully! ✅ (Cash on Delivery)");
-  cart = [];
-  renderCart();
-  toggleCart();
-}
-
-  </script>
-    
 </body>
 </html>

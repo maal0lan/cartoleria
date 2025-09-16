@@ -15,7 +15,7 @@
     <div class="form-container">
         
         <h1>CARTOLERIA &emsp; PRINT-PRO</h1>
-        <form action="confirmation.html" method="POST">
+        <form onsubmit="event.preventDefault(); window.location.href='confirmation.html';">
             <label for="customerName">Customer Name</label>
             <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required >
 
