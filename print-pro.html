@@ -1,53 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CARTOLERIA - Online Xerox Service</title>
-    <link rel="stylesheet" href="print-pro.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
-    <div class="logo" >&nbsp;CARTOLERIA*&nbsp;</div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CARTOLERIA Print-Pro — Upload PDFs, configure print settings, and get your prints delivered or pick them up.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="print-pro.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap" rel="stylesheet">
+  <title>CARTOLERIA — Print-Pro</title>
 </head>
 <body>
-    
-    <div class="form-container">
-        
-        <h1>CARTOLERIA &emsp; PRINT-PRO</h1>
-        <form onsubmit="event.preventDefault(); window.location.href='confirmation.html';">
-            <label for="customerName">Customer Name</label>
-            <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required >
+  <div class="scanlines" aria-hidden="true"></div>
 
-            <label for="fileUpload">Upload PDF</label>
-            <input type="file" id="fileUpload" name="fileUpload" accept=".pdf" required>
-
-            <label for="pageSize">Select Page Size</label>
-            <select id="pageSize" name="pageSize" >
-                <option value="A4">A4</option>
-                <option value="A3">A3</option>
-                <option value="A5">A5</option>
-                <option value="Legal">Legal</option>
-            </select>
-
-            <label for="layout">Select Layout</label>
-            <select id="layout" name="layout" >
-                <option value="portrait">Portrait</option>
-                <option value="landscape">Landscape</option>
-            </select>
-            <label for="sides">Skip Sides</label>
-            <select name="sides" id="sides">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-            <label for="phone number">Phone Number</label>
-            <input type="number" placeholder="(+91)number">
-            <label for="copies">Number Of Copies</label>
-            <input type="number" placeholder="enter no of copies do you want" required>
-            <label for="address">Address</label>
-            <input type="text" placeholder="enter your address" required>
-            <button type="submit">Submit</button>
-        </form>
+  <!-- NAVBAR -->
+  <header class="navbar glass-nav" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo-link"><h1 class="logo-text">CARTOLERIA</h1></a>
     </div>
+    <div class="nav-right">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="print-pro.html" class="nav-active">Print-Pro</a></li>
+          <li><button id="cart-btn" onclick="toggleCart()"><span class="cart-icon">🛒</span><span class="cart-badge" id="cart-badge">0</span></button></li>
+          <li>
+            <button type="button" class="theme-minimal" id="theme-toggle-btn" aria-label="Toggle light or dark theme" aria-pressed="false" title="Theme"></button>
+          </li>
+        </ul>
+      </nav>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <!-- PRINT-PRO PAGE -->
+  <div class="printpro-page">
+    <div class="printpro-hero">
+      <h2 class="section-title glowing-text">PRINT-PRO</h2>
+      <p class="printpro-subtitle">Upload. Configure. We Print & Deliver.</p>
+    </div>
+
+    <div class="printpro-layout">
+      <form class="print-form" id="print-form" onsubmit="handlePrintSubmit(event)">
+        <div class="form-group">
+          <label for="customerName">Customer Name</label>
+          <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+        <div class="form-group">
+          <label for="fileUpload">Upload PDF</label>
+          <div class="file-upload-zone" id="drop-zone">
+            <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.docx,.doc" required>
+            <div class="upload-label">
+              <span class="upload-icon">📄</span>
+              <span>Drop your file here or click to browse</span>
+              <span class="upload-hint">PDF, DOCX accepted</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pageSize">Page Size</label>
+            <select id="pageSize" name="pageSize">
+              <option value="A4">A4</option>
+              <option value="A3">A3</option>
+              <option value="A5">A5</option>
+              <option value="Legal">Legal</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="layout">Layout</label>
+            <select id="layout" name="layout">
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="printType">Print Type</label>
+            <select id="printType" name="printType">
+              <option value="bw">Black & White</option>
+              <option value="color">Color</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sides">Sides</label>
+            <select id="sides" name="sides">
+              <option value="single">Single Side</option>
+              <option value="double">Double Side</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="copies">Number of Copies</label>
+          <input type="number" id="copies" name="copies" min="1" value="1" placeholder="Enter number of copies" required>
+        </div>
+        <div class="form-group">
+          <label for="deliveryType">Delivery Method</label>
+          <select id="deliveryType" name="deliveryType">
+            <option value="pickup">Shop Pickup (Free)</option>
+            <option value="delivery">Home Delivery (+₹50)</option>
+          </select>
+        </div>
+        <div class="form-group" id="address-group" style="display:none">
+          <label for="address">Delivery Address</label>
+          <textarea id="address" name="address" rows="3" placeholder="Enter your full delivery address"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="notes">Special Instructions</label>
+          <textarea id="notes" name="notes" rows="2" placeholder="Any special requests? (optional)"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary pixel-btn large-btn" style="width:100%">► SUBMIT PRINT ORDER</button>
+      </form>
+
+      <div class="printpro-sidebar">
+        <div class="pricing-card">
+          <h3>PRICING</h3>
+          <div class="price-row"><span>B&W (per page)</span><span>₹1.50</span></div>
+          <div class="price-row"><span>Color (per page)</span><span>₹5.00</span></div>
+          <div class="price-row"><span>Double Side</span><span>+₹0.50/page</span></div>
+          <div class="price-row"><span>A3 Size</span><span>2x rate</span></div>
+          <div class="price-row"><span>Home Delivery</span><span>+₹50</span></div>
+        </div>
+        <div class="info-card">
+          <h3>HOW IT WORKS</h3>
+          <div class="step"><span class="step-num">1</span><span>Upload your document</span></div>
+          <div class="step"><span class="step-num">2</span><span>Configure print settings</span></div>
+          <div class="step"><span class="step-num">3</span><span>Submit your order</span></div>
+          <div class="step"><span class="step-num">4</span><span>Pickup or get it delivered</span></div>
+        </div>
+        <img src="images/products.gif" alt="Pixel art" style="width:100%;border-radius:8px;margin-top:20px;border:1px solid rgba(225,255,0,.1)">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-bottom"><p>© 2024–2026 CARTOLERIA.inc — All rights reserved.</p></div>
+  </footer>
+
+  <!-- CART -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div id="cart-sidebar">
+    <button class="close-cart" onclick="toggleCart()">✖</button>
+    <h2>YOUR CART</h2><ul id="cart-items"></ul>
+    <div class="cart-total"><span>Total:</span><span id="cart-total-price">₹0</span></div>
+    <div class="cart-delivery-option"><label>Delivery:</label><select id="delivery-method"><option value="pickup">Shop Pickup</option><option value="delivery">Home Delivery (+₹50)</option></select></div>
+    <button id="checkout-btn" onclick="checkout()">► PLACE ORDER (COD)</button>
+  </div>
+  <div id="toastContainer"></div>
+
+  <script src="script.js"></script>
+  <script>
+    // Show/hide address field based on delivery type
+    document.getElementById("deliveryType").addEventListener("change", function() {
+      document.getElementById("address-group").style.display = this.value === "delivery" ? "block" : "none";
+    });
+
+    function handlePrintSubmit(e) {
+      e.preventDefault();
+      var order = {
+        id: "PRT-" + Date.now(),
+        type: "print",
+        customer: document.getElementById("customerName").value,
+        phone: document.getElementById("phone").value,
+        pageSize: document.getElementById("pageSize").value,
+        layout: document.getElementById("layout").value,
+        printType: document.getElementById("printType").value,
+        sides: document.getElementById("sides").value,
+        copies: document.getElementById("copies").value,
+        delivery: document.getElementById("deliveryType").value,
+        address: document.getElementById("address").value,
+        notes: document.getElementById("notes").value,
+        date: new Date().toLocaleString(),
+        status: "Processing"
+      };
+      var orders = JSON.parse(localStorage.getItem("cartoleria_orders") || "[]");
+      orders.push(order);
+      localStorage.setItem("cartoleria_orders", JSON.stringify(orders));
+      window.location.href = "confirmation.html";
+    }
+  </script>
 </body>
 </html>

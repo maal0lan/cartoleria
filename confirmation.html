@@ -3,65 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Confirmation - CARTOLERIA</title>
+  <title>Order Confirmed — CARTOLERIA</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
   <style>
-    body {
-    
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: black;
-      margin: 0;
-    }
-
-    .confirmation-box {
-      background: rgb(0, 0, 0);
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      text-align: center;
-      max-width: 500px;
-    }
-
-    .confirmation-box h1 {
-      color:#ffe259;
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
-
-    .confirmation-box p {
-      font-size: 1.1rem;
-      color: #ffffff;
-      margin: 10px 0;
-    }
-
-    .confirmation-box button {
-      margin-top: 25px;
-      padding: 10px 20px;
-      border: none;
-      background: #a2ff0000;
-      color: #ffe259;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .confirmation-box button:hover {
-      background: #ffffff;
-      color: black;
-    }
+    .confirm-page{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+    .confirm-box{background:#141414;border:1px solid rgba(225,255,0,.15);border-radius:12px;
+      padding:50px;text-align:center;max-width:500px;width:90%;box-shadow:0 0 60px rgba(225,255,0,.05)}
+    .confirm-box .check{font-size:60px;margin-bottom:20px;animation:pop .5s ease-out}
+    @keyframes pop{0%{transform:scale(0)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+    .confirm-box h1{font-family:pixel,sans-serif;color:var(--glow);font-size:28px;margin-bottom:16px;
+      text-shadow:0 0 15px rgba(225,255,0,.3)}
+    .confirm-box p{color:#888;font-size:14px;margin:8px 0;line-height:1.6}
+    .confirm-box .order-id{font-family:pixel,sans-serif;color:var(--gold);font-size:16px;
+      background:rgba(225,255,0,.05);padding:10px;border-radius:6px;margin:20px 0;
+      border:1px solid rgba(225,255,0,.1)}
+    .confirm-btns{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+    .confirm-mascot{width:50px;image-rendering:pixelated;margin-top:20px;animation:float 3s ease-in-out infinite}
   </style>
 </head>
 <body>
-  <div class="confirmation-box">
-    <h1> Order Confirmed!</h1>
-    <p>Thank you for using <b>CARTOLERIA Print-Pro</b>.</p>
-    <p>Your files are being processed and will be delivered soon.</p>
-    <p>We’ll notify you once it’s ready for pickup/delivery.</p>
-    <button onclick="window.location.href='index.html'">Back to Home</button>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="confirm-page">
+    <div class="confirm-box">
+      <div class="check">✅</div>
+      <h1>ORDER CONFIRMED!</h1>
+      <div class="order-id" id="order-id"></div>
+      <p>Thank you for using <strong style="color:var(--glow)">CARTOLERIA</strong>.</p>
+      <p>Your order is being processed and will be ready soon.</p>
+      <p>We'll notify you once it's ready for pickup/delivery.</p>
+      <div class="confirm-btns">
+        <a href="index.html" class="btn btn-primary pixel-btn">► BACK TO HOME</a>
+        <a href="products.html" class="btn btn-secondary pixel-btn">► SHOP MORE</a>
+      </div>
+      <img src="images/order confirm.gif" alt="" class="confirm-mascot">
+    </div>
   </div>
+
+  <div id="toastContainer"></div>
+  <script src="script.js"></script>
+  <script>
+    // Show most recent order ID
+    var orders = JSON.parse(localStorage.getItem("cartoleria_orders") || "[]");
+    var el = document.getElementById("order-id");
+    if (orders.length > 0 && el) {
+      el.textContent = "Order ID: " + orders[orders.length - 1].id;
+    } else if (el) {
+      el.textContent = "Order Placed Successfully";
+    }
+  </script>
 </body>
 </html>

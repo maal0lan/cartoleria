@@ -1,157 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CARTOLERIA Products — Premium stationery from around the world.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap" rel="stylesheet">
+  <title>CARTOLERIA — Products</title>
 </head>
 <body>
-    <h1 class="head" >CARTOLERIA</h1>
-  <nav class="nav-bar" >
-    <ul class="nav-links" style="margin-top: 51px;">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="print-pro.html">Print-pro</a></li>
-    </ul>
-  </nav>
-  <div class="item1_header">
-        <p class="item1_yap"><br><br><br><br><br>EXPLORE THE<br>WORLD CLASS STATIONERY ESSENTIALS <br>STATIONERY FROM ALL AROUND THE WORLD...</p>
-        <p class="item1_welp">contact-us to order*</p>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar glass-nav" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo-link"><h1 class="logo-text">CARTOLERIA</h1></a>
     </div>
-<section class="products-section">
-  <h2 style="font-style: italic; margin-bottom: 90px;">Our Products</h2>
-  <div class="products-grid">
-    <div class="product">
-      <img src="images/product1.jpg" alt="Product 1">
-      <div class="price-tag">₹70</div>
-      <div class="desc-tag">Apsra pencil</div>
-      <button onclick="addToCart('Apsra pencil', 70)" class="click-it">+</button>
+    <div class="nav-right">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html" class="nav-active">Products</a></li>
+          <li><a href="print-pro.html">Print-Pro</a></li>
+          <li><button id="cart-btn" onclick="toggleCart()"><span class="cart-icon">🛒</span><span class="cart-badge" id="cart-badge">0</span></button></li>
+          <li>
+            <button type="button" class="theme-minimal" id="theme-toggle-btn" aria-label="Toggle light or dark theme" aria-pressed="false" title="Theme"></button>
+          </li>
+        </ul>
+      </nav>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
-    <div class="product">
-      <img src="images/product2.jpg" alt="Product 2">
-      <div class="price-tag">₹100</div>
-      <div class="desc-tag">White pencil</div>
-      <button onclick="addToCart('White pencil', 100)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product3.jpg" alt="Product 3">
-      <div class="price-tag">₹2050</div>
-      <div class="desc-tag">Water colour</div>
-      <button onclick="addToCart('Water colour', 2050)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product4.jpg" alt="Product 4">
-      <div class="price-tag">₹3000</div>
-      <div class="desc-tag">Pastel colour</div>
-      <button onclick="addToCart('Pastel colour', 3000)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product5.jpg" alt="Product 5">
-      <div class="price-tag">₹450</div>
-      <div class="desc-tag">Water colour</div>
-      <button onclick="addToCart('Water colour', 450)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product6.jpg" alt="Product 6">
-      <div class="price-tag">₹1200</div>
-      <div class="desc-tag">250GSM notebook</div>
-      <button onclick="addToCart('250GSM notebook', 1200)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product7.jpg" alt="Product 7">
-      <div class="price-tag">₹70</div>
-      <div class="desc-tag">Rubber scale</div>
-      <button onclick="addToCart('Rubber scale', 70)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product8.jpg" alt="Product 8">
-      <div class="price-tag">₹7000</div>
-      <div class="desc-tag">Mechanical pencil-kit</div>
-      <button onclick="addToCart('Mechanical pencil-kit', 7000)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product9.jpg" alt="Product 9">
-      <div class="price-tag">₹120</div>
-      <div class="desc-tag">Mechanical pencil</div>
-      <button onclick="addToCart('Mechanical pencil', 120)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product10.jpg" alt="Product 10">
-      <div class="price-tag">₹665</div>
-      <div class="desc-tag">Class mate pulse</div>
-      <button onclick="addToCart('Class mate pulse', 665)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product11.jpg" alt="Product 11">
-      <div class="price-tag">₹90</div>
-      <div class="desc-tag">4x 90pages notebook</div>
-      <button onclick="addToCart('4x 90pages notebook', 90)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product12.jpg" alt="Product 12">
-      <div class="price-tag">₹40</div>
-      <div class="desc-tag">cat eraser</div>
-      <button onclick="addToCart('cat eraser', 40)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product13.jpg" alt="Product 13">
-      <div class="price-tag">₹140</div>
-      <div class="desc-tag">Art eraser</div>
-      <button onclick="addToCart('Art eraser', 140)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product14.jpg" alt="Product 14">
-      <div class="price-tag">₹100</div>
-      <div class="desc-tag">Colour pen set</div>
-      <button onclick="addToCart('Colour pen set', 100)"class="click-it">+</button>
-    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h2 class="section-title glowing-text" style="font-size:clamp(20px,3vw,30px); margin-bottom: 20px;">EXPLORE WORLD CLASS STATIONERY ESSENTIALS</h2>
     
-    <div class="product">
-      <img src="images/product16.jpg" alt="Product 16">
-      <div class="price-tag">₹950</div>
-      <div class="desc-tag">Fountain Parker pen</div>
-      <button onclick="addToCart('Fountain Parker pen', 950)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product17.jpg" alt="Product 17">
-      <div class="price-tag">₹250</div>
-      <div class="desc-tag">Synatic - creme ivory</div>
-      <button onclick="addToCart('Synatic - creme ivory', 250)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product18.jpg" alt="Product 18">
-      <div class="price-tag">₹125</div>
-      <div class="desc-tag">Parker ink</div>
-      <button onclick="addToCart('Parker ink', 125)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product19.jpg" alt="Product 19">
-      <div class="price-tag">₹175</div>
-      <div class="desc-tag">Faber Castel ink</div>
-      <button onclick="addToCart('Faber Castel ink', 175)"class="click-it">+</button>
-    </div>
-    <div class="product">
-      <img src="images/product20.jpg" alt="Product 20">
-      <div class="price-tag">₹275</div>
-      <div class="desc-tag">Geomentry box</div>
-      <button onclick="addToCart('Geomentry box', 275)"class="click-it">+</button>
+    <!-- FILTER OPTIONS -->
+    <div class="product-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="pens">Pens & Inks</button>
+      <button class="filter-btn" data-filter="pencils">Pencils</button>
+      <button class="filter-btn" data-filter="notebooks">Notebooks</button>
+      <button class="filter-btn" data-filter="colours">Colours</button>
+      <button class="filter-btn" data-filter="accessories">Accessories</button>
     </div>
   </div>
-</section>
-<!-- toast container -->
-<div id="toastContainer"></div>
 
-<!-- cart button -->
-<button id="cart-btn" onclick="toggleCart()">🛒 Cart</button>
+  <!-- PRODUCTS -->
+  <section class="products-section">
+    <div class="products-grid" id="products-grid">
+      <!-- PENCILS -->
+      <div class="product reveal-card" data-category="pencils" data-delay="0">
+        <img src="images/product1.jpg" alt="Apsra pencil">
+        <div class="product-info"><div class="product-name">Apsra Pencil</div><div class="product-price">₹70</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Apsra pencil',70)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="pencils" data-delay="50">
+        <img src="images/product2.jpg" alt="White pencil">
+        <div class="product-info"><div class="product-name">White Pencil</div><div class="product-price">₹100</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('White pencil',100)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="pencils" data-delay="100">
+        <img src="images/product9.jpg" alt="Mechanical pencil">
+        <div class="product-info"><div class="product-name">Mechanical Pencil</div><div class="product-price">₹120</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Mechanical pencil',120)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="pencils" data-delay="150">
+        <img src="images/product8.jpg" alt="Mechanical pencil kit">
+        <div class="product-info"><div class="product-name">Mechanical Pencil Kit</div><div class="product-price">₹7000</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Mechanical pencil-kit',7000)">+ ADD</button>
+      </div>
 
-<!-- cart sidebar -->
-<div id="cart-sidebar" class="cart-sidebar">
-  <button class="close-cart" onclick="toggleCart()">✖</button>
-  <h2>Your Cart</h2>
-  <ul id="cart-items"></ul>
-  <button id="checkout-btn" onclick="checkout()">Place Order (COD)</button>
-</div>
+      <!-- COLOURS -->
+      <div class="product reveal-card" data-category="colours" data-delay="0">
+        <img src="images/product3.jpg" alt="Water colour">
+        <div class="product-info"><div class="product-name">Water Colour Set</div><div class="product-price">₹2050</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Water colour',2050)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="colours" data-delay="50">
+        <img src="images/product4.jpg" alt="Pastel colour">
+        <div class="product-info"><div class="product-name">Pastel Colour Set</div><div class="product-price">₹3000</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Pastel colour',3000)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="colours" data-delay="100">
+        <img src="images/product5.jpg" alt="Water colour mini">
+        <div class="product-info"><div class="product-name">Water Colour Mini</div><div class="product-price">₹450</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Water colour mini',450)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="colours" data-delay="150">
+        <img src="images/product14.jpg" alt="Colour pen set">
+        <div class="product-info"><div class="product-name">Colour Pen Set</div><div class="product-price">₹100</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Colour pen set',100)">+ ADD</button>
+      </div>
+
+      <!-- NOTEBOOKS -->
+      <div class="product reveal-card" data-category="notebooks" data-delay="0">
+        <img src="images/product6.jpg" alt="250GSM notebook">
+        <div class="product-info"><div class="product-name">250GSM Notebook</div><div class="product-price">₹1200</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('250GSM notebook',1200)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="notebooks" data-delay="50">
+        <img src="images/product10.jpg" alt="Classmate pulse">
+        <div class="product-info"><div class="product-name">Classmate Pulse</div><div class="product-price">₹665</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Classmate Pulse',665)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="notebooks" data-delay="100">
+        <img src="images/product11.jpg" alt="4x notebook">
+        <div class="product-info"><div class="product-name">4x 90pages Notebook</div><div class="product-price">₹90</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('4x 90pages notebook',90)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="notebooks" data-delay="150">
+        <img src="images/product17.jpg" alt="Synatic notebook">
+        <div class="product-info"><div class="product-name">Synatic Creme Ivory</div><div class="product-price">₹250</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Synatic creme ivory',250)">+ ADD</button>
+      </div>
+
+      <!-- ACCESSORIES -->
+      <div class="product reveal-card" data-category="accessories" data-delay="0">
+        <img src="images/product7.jpg" alt="Rubber scale">
+        <div class="product-info"><div class="product-name">Rubber Scale</div><div class="product-price">₹70</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Rubber scale',70)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="accessories" data-delay="50">
+        <img src="images/product12.jpg" alt="Cat eraser">
+        <div class="product-info"><div class="product-name">Cat Eraser</div><div class="product-price">₹40</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Cat eraser',40)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="accessories" data-delay="100">
+        <img src="images/product13.jpg" alt="Art eraser">
+        <div class="product-info"><div class="product-name">Art Eraser</div><div class="product-price">₹140</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Art eraser',140)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="accessories" data-delay="150">
+        <img src="images/product20.jpg" alt="Geometry box">
+        <div class="product-info"><div class="product-name">Geometry Box</div><div class="product-price">₹275</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Geometry box',275)">+ ADD</button>
+      </div>
+
+      <!-- PENS & INKS -->
+      <div class="product reveal-card" data-category="pens" data-delay="0">
+        <img src="images/product16.jpg" alt="Parker pen">
+        <div class="product-info"><div class="product-name">Fountain Parker Pen</div><div class="product-price">₹950</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Fountain Parker pen',950)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="pens" data-delay="50">
+        <img src="images/product18.jpg" alt="Parker ink">
+        <div class="product-info"><div class="product-name">Parker Ink</div><div class="product-price">₹125</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Parker ink',125)">+ ADD</button>
+      </div>
+      <div class="product reveal-card" data-category="pens" data-delay="100">
+        <img src="images/product19.jpg" alt="Faber Castel ink">
+        <div class="product-info"><div class="product-name">Faber Castel Ink</div><div class="product-price">₹175</div></div>
+        <button class="btn btn-primary pixel-btn" onclick="addToCart('Faber Castel ink',175)">+ ADD</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-bottom"><p>© 2024–2026 CARTOLERIA.inc — All rights reserved.</p></div>
+  </footer>
+
+  <!-- CART -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div id="cart-sidebar">
+    <button class="close-cart" onclick="toggleCart()">✖</button>
+    <h2>YOUR CART</h2>
+    <ul id="cart-items"></ul>
+    <div class="cart-total"><span>Total:</span><span id="cart-total-price">₹0</span></div>
+    <div class="cart-delivery-option"><label>Delivery:</label><select id="delivery-method"><option value="pickup">Shop Pickup (Free)</option><option value="delivery">Home Delivery (+₹50)</option></select></div>
+    <button id="checkout-btn" onclick="checkout()">► PLACE ORDER (COD)</button>
+    <div class="cart-footer-art"><img src="images/gato-celeste.gif" alt=""></div>
+  </div>
+  <div id="toastContainer"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>

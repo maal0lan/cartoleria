@@ -1,62 +1,72 @@
-.logo
-{
-    position: absolute;
-    font-size: 30px;
-    color: rgb(255, 221, 1);
-    background-color: rgba(82, 80, 66, 0.647);
-    left: 1200px;
-    bottom: 800px;
-}
-body {
-    font-family: 'Tiny5', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-image: url(images/printpro.gif);
-    cursor: crosshair;
+/* ═══════ PRINT-PRO PAGE STYLES ═══════ */
+.printpro-page { padding: 100px 40px 60px; position: relative; z-index: 1; }
+
+.printpro-hero { text-align: center; margin-bottom: 50px; }
+.printpro-subtitle { color: #888; font-size: 14px; margin-top: -30px; letter-spacing: 2px; }
+
+.printpro-layout {
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px;
+  max-width: 1100px; margin: 0 auto; align-items: start;
 }
 
-.form-container {
-    background: rgba(255, 255, 255, 0.186);
-    backdrop-filter: blur(1.5px);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 1px 12px rgba(102, 140, 50, 0.756);
-    cursor: crosshair;
+/* Form */
+.print-form {
+  background: #141414; border: 1px solid rgba(225,255,0,.08); border-radius: 10px;
+  padding: 30px; display: flex; flex-direction: column; gap: 18px;
 }
-h1 {
-    color: rgb(255, 221, 1);
-    text-align: center;
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+  font-family: pixel, sans-serif; font-size: 11px; color: var(--gold);
+  letter-spacing: 2px; text-transform: uppercase;
 }
-  
-label {
-    display: block;
-    margin: 15px 0 5px;
-    color: rgba(0, 0, 0, 0.996);
-    cursor: crosshair;
+.form-group input, .form-group select, .form-group textarea {
+  background: #0a0a0a; border: 1px solid rgba(225,255,0,.12); color: #fff;
+  padding: 12px; font-family: "Pixelify Sans", sans-serif; font-size: 13px;
+  border-radius: 6px; outline: none; transition: border-color .3s; resize: none;
 }
-input, select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: crosshair;
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--glow); box-shadow: 0 0 10px rgba(225,255,0,.1);
 }
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: rgb(255, 221, 1);
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    color: black;
-    cursor: crosshair;
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* File upload */
+.file-upload-zone {
+  position: relative; border: 2px dashed rgba(225,255,0,.2); border-radius: 8px;
+  padding: 30px; text-align: center; transition: all .3s; cursor: inherit;
 }
-button:hover {
-    background-color: #6ae641b4;
-    filter: blur(1.2px);
-    transform: scale(10px);
-    cursor: crosshair;
+.file-upload-zone:hover { border-color: var(--glow); background: rgba(225,255,0,.02); }
+.file-upload-zone input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: inherit;
+}
+.upload-label { display: flex; flex-direction: column; gap: 6px; color: #888; font-size: 13px; }
+.upload-icon { font-size: 32px; }
+.upload-hint { font-size: 11px; color: #555; }
+
+/* Sidebar cards */
+.printpro-sidebar { display: flex; flex-direction: column; gap: 20px; }
+.pricing-card, .info-card {
+  background: #141414; border: 1px solid rgba(225,255,0,.08); border-radius: 10px; padding: 24px;
+}
+.pricing-card h3, .info-card h3 {
+  font-family: pixel, sans-serif; color: var(--gold); font-size: 14px;
+  margin-bottom: 16px; letter-spacing: 2px;
+}
+.price-row {
+  display: flex; justify-content: space-between; padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04); font-size: 12px; color: #aaa;
+}
+.price-row span:last-child { color: var(--glow); font-family: pixel, sans-serif; }
+.step {
+  display: flex; align-items: center; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04); font-size: 12px; color: #aaa;
+}
+.step-num {
+  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+  background: rgba(225,255,0,.1); color: var(--glow); font-family: pixel, sans-serif;
+  font-size: 13px; border-radius: 4px; flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .printpro-layout { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
 }

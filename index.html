@@ -2,34 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CARTOLERIA — Pixel-art online stationery shop.">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <script src="script.js"></script>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-  <title>CARTOLERIA.inc</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap" rel="stylesheet">
+  <title>CARTOLERIA — Pixel Stationery Shop</title>
 </head>
 <body>
-  <h1 class="head">CARTOLERIA</h1>
-  <nav class="nav-bar">
-    <ul class="nav-links" style="margin-top: 16px;">
-      <li><a href="index.html" >Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="print-pro.html">Print-pro</a></li>
-    </ul>
-  </nav>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar glass-nav" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo-link"><h1 class="logo-text">CARTOLERIA</h1></a>
+    </div>
+    <div class="nav-right">
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="nav-active">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="print-pro.html">Print-Pro</a></li>
+          <li><button id="cart-btn" onclick="toggleCart()"><span class="cart-icon">🛒</span><span class="cart-badge" id="cart-badge">0</span></button></li>
+          <li>
+            <button type="button" class="theme-minimal" id="theme-toggle-btn" aria-label="Toggle light or dark theme" aria-pressed="false" title="Theme"></button>
+          </li>
+        </ul>
+      </nav>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <!-- HERO — big interactive logo -->
+  <section class="hero minimalist-hero" id="hero-section">
+    <div class="hero-content">
+      
+      <p class="hero-subtext">Welcome to <strong>CARTOLERIA</strong> — where everyday quality stationery and your xerox but smarter.</p>
+      <div class="hero-btns" style="margin-top: 30px;">
+        <a href="products.html" class="btn btn-primary pixel-btn">► EXPLORE PRODUCTS</a>
+      </div>
+    </div>
+  </section>
   
-  <!-- <nav class="nav-bar">
-  <div class="logo">Cartoleria</div>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="products.html">Products</a></li>
-    <li><a href="print-pro.html">Print-pro</a></li>
-  </ul>
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
-</nav> -->
-<p class="description">
-  Welcome to <b>CARTOLERIA</b> — where everyday quality stationery meets next-gen printing where you pick up at your stop. 
-</p>
+  <!-- POLICE TAPE BANNER -->
+  <div class="police-tape-container">
+    <div class="police-tape">
+      <span>STATIONERY • PRINTING • PIXEL ART • NEXT-GEN • XEROX • CARTOLERIA • QUALITY • PICKUP • STATIONERY • PRINTING • PIXEL ART • NEXT-GEN • XEROX • CARTOLERIA • QUALITY • PICKUP • </span>
+      <span>STATIONERY • PRINTING • PIXEL ART • NEXT-GEN • XEROX • CARTOLERIA • QUALITY • PICKUP • STATIONERY • PRINTING • PIXEL ART • NEXT-GEN • XEROX • CARTOLERIA • QUALITY • PICKUP • </span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer minimalist-footer">
+    <div class="footer-bottom"><p>© 2024–2026 CARTOLERIA.inc — All rights reserved. Built with pixels by maalolan.</p><img src="images/someth on totoro nose.gif" alt="" class="footer-pixel"></div>
+  </footer>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div id="cart-sidebar">
+    <button class="close-cart" onclick="toggleCart()">✖</button>
+    <h2>YOUR CART</h2>
+    <ul id="cart-items"></ul>
+    <div class="cart-total"><span>Total:</span><span id="cart-total-price">₹0</span></div>
+    <div class="cart-delivery-option"><label>Delivery Method:</label><select id="delivery-method"><option value="pickup">Shop Pickup (Free)</option><option value="delivery">Home Delivery (+₹50)</option></select></div>
+    <button id="checkout-btn" onclick="checkout()">► PLACE ORDER (COD)</button>
+    <div class="cart-footer-art"><img src="images/gato-celeste.gif" alt=""></div>
+  </div>
+
+  <div id="toastContainer"></div>
+  <div class="modal-overlay" id="order-modal-overlay"><div class="modal" id="order-modal"><button class="modal-close" onclick="closeOrderModal()">✖</button><h2>ORDER HISTORY</h2><div id="order-history-list"></div></div></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
